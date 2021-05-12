@@ -1,0 +1,8 @@
+.card {
+    margin: 15px;
+    cursor: pointer !important;
+}
+
+hr {
+    border-top: 1px solid black;
+}

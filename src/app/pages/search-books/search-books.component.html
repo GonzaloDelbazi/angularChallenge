@@ -1,5 +1,30 @@
 <div class="row">
-    <div class="col-6">
-        <p>Search your book</p>
+    <div class="col">
+        <h1 class="title">Search your book</h1>
+        <hr>
+
+        <div class="input-group-prepend">
+            <mat-form-field class="option" appearance="fill">
+                <mat-label>Categories</mat-label>
+                <mat-select>
+                    <mat-option (click)="validatedCategory(option.list_name)" *ngFor="let option of categories" id="opcion" [value]="option.list_name">{{option.list_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <input #text type="text" id="box" disabled class="form-control input " aria-label="Sizing example input" placeholder="Search Book" aria-describedby="inputGroup-sizing-lg" (keyup.enter)="search(text.value)">
+            <span class="input-group-text badge-info span">NYT</span>
+        </div>
+        <div *ngIf="!encontrado" class="alert alert-warning">
+            <h3><i class="fa fa-exclamation-triangle"></i> - Libro no encontrado</h3>
+        </div>
+        <div *ngIf="error" class="alert alert-danger">
+            <h3>¡Error!</h3>
+            <i class="fa fa-exclamation-triangle"></i>
+            <p>-> {{mensajeError}}</p>
+
+        </div>
+        <!-- Llamando componente card -->
+        <app-card *ngIf="encontrado" [libros]="libros"></app-card>
+
     </div>
 </div>

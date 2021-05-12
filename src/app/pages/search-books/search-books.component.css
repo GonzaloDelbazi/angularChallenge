@@ -1,0 +1,56 @@
+div {
+    margin: 20px;
+}
+
+.title {
+    font-family: 'Girassol', cursive;
+    font-size: 25px;
+    position: relative;
+}
+
+.col {
+    border: solid grey 0.5px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+}
+
+hr {
+    border: 1px solid rgb(83, 83, 83);
+}
+
+.texto {
+    margin-left: 10px;
+}
+
+.input {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 30px !important;
+    font-family: 'Girassol', cursive;
+}
+
+.option {
+    width: 100px !important;
+    height: auto;
+}
+
+.span {
+    width: auto;
+    height: 63px;
+}
+
+.book {
+    font-size: 20px;
+}
+
+.card {
+    width: auto;
+    height: auto;
+}
+
+.container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+}

@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
+
+// MODULES
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AngularMaterialModule } from './angular-material.module';
+import { FormsModule } from '@angular/forms';
 
+
+// COMPONENTS
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchBooksComponent } from './pages/search-books/search-books.component';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { PagesComponent } from './pages/pages.component';
 import { NotPageFoundComponent } from './components/not-page-found/not-page-found.component';
-import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { CardComponent } from './components/card/card.component';
+
 
 
 
@@ -20,13 +27,15 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     DashBoardComponent,
     NotPageFoundComponent,
     PagesComponent,
-    NavBarComponent
+    NavBarComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularMaterialModule,
+    FormsModule
 
 
   ],
