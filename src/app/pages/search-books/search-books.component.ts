@@ -89,6 +89,10 @@ export class SearchBooksComponent implements OnInit{
           return;
         }
       }
+      if(this.sBook.length === 0){
+        this.encontrado = false;
+        return;
+      }
 
 
     }, (errorService) => {

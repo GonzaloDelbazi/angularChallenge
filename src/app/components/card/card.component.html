@@ -1,4 +1,4 @@
-<div class="card" *ngFor="let book of libros" style="width: 18rem;" (click)="buscarGoogle(book.book_title, book.book_author)">
+<div class="card" *ngFor="let book of libros" style="width: 18rem;" (click)="buscarGoogle(book.title, book.author)">
     <div class="card-body">
         <img class="card-img-top" [src]="book.book_image" alt="">
         <h2 class="card-title">{{book.title}}</h2>
