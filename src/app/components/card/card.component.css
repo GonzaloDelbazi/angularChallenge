@@ -1,0 +1,9 @@
+.card {
+    cursor: pointer !important;
+    display: flex;
+    flex-direction: row;
+}
+
+hr {
+    border-top: 1px solid black;
+}

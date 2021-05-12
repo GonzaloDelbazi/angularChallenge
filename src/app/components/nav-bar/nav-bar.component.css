@@ -1,0 +1,21 @@
+nav {
+    background-color: rgb(82, 82, 82) !important;
+    width: 100%;
+}
+
+#title {
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+#title>h1 {
+    border: solid rgb(255, 255, 255) 1px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(121, 121, 121);
+}
