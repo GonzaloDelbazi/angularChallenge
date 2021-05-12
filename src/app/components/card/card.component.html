@@ -1,10 +1,9 @@
-<div class="container">
-    <div class="card" *ngFor="let book of libros" style="width: 18rem;" (click)="buscarGoogle(book.book_title, book.book_author)">
-        <div class="card-body">
-            <h2 class="card-title">{{book.book_title}}</h2>
-            <h3 class="card-text">{{book.book_author}}</h3>
-            <hr>
-            <p class="card-text">{{book.summary}}</p>
-        </div>
+<div class="card" *ngFor="let book of libros" style="width: 18rem;" (click)="buscarGoogle(book.book_title, book.book_author)">
+    <div class="card-body">
+        <img class="card-img-top" [src]="book.book_image" alt="">
+        <h2 class="card-title">{{book.title}}</h2>
+        <h3 class="card-text">{{book.author}}</h3>
+        <hr>
+        <p class="card-text">{{book.description}}</p>
     </div>
 </div>

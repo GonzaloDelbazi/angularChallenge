@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
 import { Categories, Result } from '../interfaces/categories-details';
-import { Results, List, Books } from '../interfaces/books-response';
-import { SingleBook, Resultados } from '../interfaces/singleBook-responsive';
+import { List, Books } from '../interfaces/books-response';
+import { Book, Results, Category } from '../interfaces/category-response';
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +30,24 @@ export class NyTimesService {
     );
   }
 
-  getBookByTitle(title: string): Observable<Resultados[]>{
+  cleanWord(word: string): string{
+    word.trim();
+    return word.toLowerCase().replace(/[!.,  ]/g, '-');
+  }
 
-    return this.htpp.get<SingleBook>(`${this.url}reviews.json?api-key=${this.apiKey}&title=${title}`)
+  getBookByTitle(title: string, categoria: string):Observable<Book[]>{
+
+    categoria = this.cleanWord(categoria);
+    return this.htpp.get<Category>(`${this.url}lists/current/${categoria}.json?api-key=wMrIxYjKdpTQq76wy7ngPAG1OD0VJy8j`)
     .pipe(
-      map(resp => resp.results)
-    )
+      map(info => info.results),
+      map(results => results.books)
+    );
+
+    // return this.htpp.get<SingleBook>(`${this.url}reviews.json?api-key=${this.apiKey}&title=${title}`)
+    // .pipe(
+    //   map(resp => resp.results)
+    // );
   }
 
 

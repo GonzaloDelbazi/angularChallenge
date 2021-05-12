@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { List, Book } from '../../interfaces/books-response';
+import { Book } from '../../interfaces/category-response';
 import {Router} from '@angular/router';
-import { title } from 'process';
+
 
 @Component({
   selector: 'app-card',

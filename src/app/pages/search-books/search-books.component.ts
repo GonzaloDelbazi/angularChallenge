@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NyTimesService } from '../../services/ny-times.service';
 import { Result } from '../../interfaces/categories-details';
-import { List, Book } from '../../interfaces/books-response';
-import { Resultados } from '../../interfaces/singleBook-responsive';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import { List } from '../../interfaces/books-response';
+import { Book } from '../../interfaces/category-response';
 
 @Component({
   selector: 'app-search-books',
@@ -16,7 +14,7 @@ export class SearchBooksComponent implements OnInit{
   categories: Result[] = []; // CATEGORIAS TRAIDAS
   categoriaActual: string; // NOMBRE DE CATEGORIA SELECCIONADA
   categoriaSeleccionada: List[] = [];
-  libros: Resultados[] = []; // LIBROS DE CATEGORIA SELECCIONADA
+  sBook: Book[] = []; // sBook DE CATEGORIA SELECCIONADA
   error = false; // DETECTAR ERROR
   mensajeError: string;
   encontrado: boolean;
@@ -29,7 +27,7 @@ export class SearchBooksComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(this.libros){
+    if(this.sBook){
       // PARA QUE HICE ESTO
     }
     this.bookService.getCategories().subscribe( getInfo => {
@@ -53,9 +51,9 @@ export class SearchBooksComponent implements OnInit{
 
   // BUSCAR LIBRO POR TITULO
 
-  search(title){
+  search(title: string){
 
-    // BUSQUEDA DE LIBROS POR CATEGORIA
+    // BUSQUEDA DE sBook POR CATEGORIA
 
     // this.bookService.getCategory().subscribe(lists => {
 
@@ -63,27 +61,36 @@ export class SearchBooksComponent implements OnInit{
     //   for (let i = 0; i < lists.length; i++){
 
     //     if ((lists[i].list_name) === this.categoriaActual){
-    //       this.libros = [];
+    //       this.sBook = [];
     //       this.categoriaSeleccionada.push(lists[i]);
-    //       this.libros = this.categoriaSeleccionada[0].books;
+    //       this.sBook = this.categoriaSeleccionada[0].books;
     //     }
 
     //   }
-    //   console.log(this.libros);
+    //   console.log(this.sBook);
 
     // });
 
     title = title.trim();
-    if(title.lenght === 0){
+    if(title.length === 0){
       return;
     }
-    this.bookService.getBookByTitle(title).subscribe(resp => {
-      if(resp.length === 0){
-        this.encontrado = false;
+    title = title.toLowerCase();
+    this.bookService.getBookByTitle(title, this.categoriaActual).subscribe(resp => {
+      console.log(resp);
+      if (resp.length === 0){
         return;
       }
-      this.encontrado = true;
-      this.libros = resp;
+      for(const book of resp){
+        if(book.title.toLowerCase() === title){
+          this.sBook.push(book);
+          this.encontrado = true;
+          console.log(this.sBook);
+          return;
+        }
+      }
+
+
     }, (errorService) => {
       this.error = true;
       this.mensajeError = errorService.message;

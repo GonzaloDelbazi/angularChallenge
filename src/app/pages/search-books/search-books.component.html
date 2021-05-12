@@ -2,7 +2,6 @@
     <div class="col">
         <h1 class="title">Search your book</h1>
         <hr>
-
         <div class="input-group-prepend">
             <mat-form-field class="option" appearance="fill">
                 <mat-label>Categories</mat-label>
@@ -24,7 +23,7 @@
 
         </div>
         <!-- Llamando componente card -->
-        <app-card *ngIf="encontrado" [libros]="libros"></app-card>
+        <app-card *ngIf="encontrado" [libros]="sBook"></app-card>
 
     </div>
 </div>
